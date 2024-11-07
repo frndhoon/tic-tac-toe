@@ -73,6 +73,11 @@ function App() {
   const hasDraw = gameTurns.length === 9 && !winner;
 
   function handleSelectSquare(rowIndex, colIndex) {
+    const isSquareSelected = gameTurns.some(
+      (turn) => turn.square.row === rowIndex && turn.square.col === colIndex
+    );
+    if (isSquareSelected) return;
+
     setGameTurns((prevTurns) => {
       const currentPlayer = deriveActivePlayer(prevTurns);
 
